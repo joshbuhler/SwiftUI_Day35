@@ -14,6 +14,8 @@
 		5C6D4793242D666C00946966 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D4792242D666C00946966 /* Preview Assets.xcassets */; };
 		5C6D4796242D666C00946966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6D4794242D666C00946966 /* LaunchScreen.storyboard */; };
 		5C6D47A1242D666D00946966 /* Day_35_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47A0242D666D00946966 /* Day_35_challengeTests.swift */; };
+		5C6D47AC242D6CCA00946966 /* MathGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47AB242D6CCA00946966 /* MathGamePresenter.swift */; };
+		5C6D47AE242D6DB100946966 /* MathGamePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47AD242D6DB100946966 /* MathGamePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		5C6D479C242D666D00946966 /* Day_35_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day_35_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6D47A0242D666D00946966 /* Day_35_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_35_challengeTests.swift; sourceTree = "<group>"; };
 		5C6D47A2242D666D00946966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C6D47AB242D6CCA00946966 /* MathGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathGamePresenter.swift; sourceTree = "<group>"; };
+		5C6D47AD242D6DB100946966 /* MathGamePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathGamePresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 				5C6D4794242D666C00946966 /* LaunchScreen.storyboard */,
 				5C6D4797242D666C00946966 /* Info.plist */,
 				5C6D4791242D666C00946966 /* Preview Content */,
+				5C6D47AB242D6CCA00946966 /* MathGamePresenter.swift */,
 			);
 			path = Day_35_challenge;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6D47A0242D666D00946966 /* Day_35_challengeTests.swift */,
+				5C6D47AD242D6DB100946966 /* MathGamePresenterTests.swift */,
 				5C6D47A2242D666D00946966 /* Info.plist */,
 			);
 			path = Day_35_challengeTests;
@@ -210,6 +216,7 @@
 			files = (
 				5C6D478A242D666B00946966 /* AppDelegate.swift in Sources */,
 				5C6D478C242D666B00946966 /* SceneDelegate.swift in Sources */,
+				5C6D47AC242D6CCA00946966 /* MathGamePresenter.swift in Sources */,
 				5C6D478E242D666B00946966 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6D47AE242D6DB100946966 /* MathGamePresenterTests.swift in Sources */,
 				5C6D47A1242D666D00946966 /* Day_35_challengeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
