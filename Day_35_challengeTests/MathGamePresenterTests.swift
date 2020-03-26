@@ -31,7 +31,6 @@ class MathGamePresenterTests: XCTestCase {
         presenter.startGame(totalQuestions: 3, upperRange: 5)
         
         XCTAssertNotEqual(presenter.gameState, .setup)
-        XCTAssertNotEqual(presenter.currentScore, 0)
         XCTAssertFalse(presenter.questions.count == 0)
         
         presenter.newGame()
@@ -41,8 +40,47 @@ class MathGamePresenterTests: XCTestCase {
         XCTAssertTrue(presenter.questions.count == 0)
     }
     
-    func test_startGame () {
+    func test_startGame_defaultLowerRange () {
+        let presenter = MathGamePresenter()
         
+        let questionCount = 5
+        let upperRange = 5
+        let lowerRange = 0
+        presenter.startGame(totalQuestions: questionCount,
+                            upperRange: upperRange)
+        
+        XCTAssertEqual(presenter.gameState, .playing)
+        XCTAssertTrue(presenter.questions.count == questionCount)
+        for q in presenter.questions {
+            XCTAssertLessThanOrEqual(q.leftSide, upperRange)
+            XCTAssertLessThanOrEqual(q.rightSide, upperRange)
+            
+            XCTAssertGreaterThanOrEqual(q.leftSide, lowerRange)
+            XCTAssertGreaterThanOrEqual(q.rightSide, lowerRange)
+            print("q: \(q.questionText)")
+        }
+    }
+    
+    func test_startGame_withLowerRange () {
+        let presenter = MathGamePresenter()
+        
+        let questionCount = 10
+        let upperRange = 7
+        let lowerRange = 5
+        presenter.startGame(totalQuestions: questionCount,
+                            upperRange: upperRange,
+                            lowerRange: lowerRange)
+        
+        XCTAssertEqual(presenter.gameState, .playing)
+        XCTAssertTrue(presenter.questions.count == questionCount)
+        for q in presenter.questions {
+            XCTAssertLessThanOrEqual(q.leftSide, upperRange)
+            XCTAssertLessThanOrEqual(q.rightSide, upperRange)
+            
+            XCTAssertGreaterThanOrEqual(q.leftSide, lowerRange)
+            XCTAssertGreaterThanOrEqual(q.rightSide, lowerRange)
+            print("q: \(q.questionText)")
+        }
     }
     
     func submitAnswer () {

@@ -22,9 +22,14 @@ class MathGamePresenter {
     }
     
     func startGame (totalQuestions:Int, upperRange:Int, lowerRange:Int = 0) {
-        currentScore = 31
+        
         gameState = .playing
-        questions.append(MathQuestion(leftSide: 3, rightSide: 3))
+        
+        for _ in 0..<totalQuestions {
+            let newQ = MathQuestion(leftSide: Int.random(in: lowerRange...upperRange),
+                                    rightSide: Int.random(in: lowerRange...upperRange))
+            questions.append(newQ)
+        }
     }
     
     func submitAnswer (answer:Int) {
