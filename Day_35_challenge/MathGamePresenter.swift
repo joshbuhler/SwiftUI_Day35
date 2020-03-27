@@ -34,6 +34,8 @@ class MathGamePresenter {
                 }
             }
             
+            // now mix things up a bit
+            questions.shuffle()            
         } else {
             for _ in 0..<totalQuestions {
                 let newQ = MathQuestion(leftSide: Int.random(in: lowerRange...upperRange),
@@ -41,8 +43,6 @@ class MathGamePresenter {
                 questions.append(newQ)
             }
         }
-        
-        
     }
     
     func submitAnswer (answer:Int) {
