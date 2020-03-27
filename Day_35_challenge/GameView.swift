@@ -10,75 +10,55 @@ import SwiftUI
 
 struct GameView: View {
     
-    var presenter:MathGamePresenter
+    @ObservedObject var presenter:MathGamePresenter
     
-    @State private var lowerBound:Int = 0
-    @State private var upperBound:Int = 5
-    @State private var totalRounds:Int = 0
+    @State var currentAnswer:String = "0"
     
-    var roundOptions:[String] = ["5", "10", "20", "All"]
-    
-    func startGame () {
-        let rounds:Int = Int(roundOptions[totalRounds]) ?? 0
-        
-        presenter.startGame(totalQuestions: rounds,
-                            upperRange: upperBound,
-                            lowerRange: lowerBound)
+    func answerQuestion () {
+        print ("answerQuestion")
     }
+    
     
     var body: some View {
         
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.orange, Color.black]),
-                           startPoint: .top,
-                           endPoint: .bottom).edgesIgnoringSafeArea(.all)
+        VStack (spacing: 30) {
             
-            VStack (spacing: 30) {
-                Text("MATH FACTS")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                
-                Text("Set the game range:")
-                
-                HStack {
-                    VStack {
-                        Text("Lowest Number: \(self.lowerBound)")
-                        Stepper("", value: $lowerBound, in: 0...12)
-                        .labelsHidden()
-                    }
-                    
-                    Spacer()
-                    
-                    VStack (alignment: .center) {
-                        Text("Highest Number: \(self.upperBound)")
-                        Stepper("", value: $upperBound, in: 0...12)
-                            .labelsHidden()
-                    }
-                }
-                
-                Picker("Total Rounds", selection: $totalRounds) {
-                    ForEach (0 ..< roundOptions.count) {
-                        Text("\(self.roundOptions[$0])")
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
-                
-                Button(action: {
-                    self.startGame()
-                }) {
-                    Image(systemName: "airplane")
+            Text("Current Score: \(self.presenter.currentScore)")
+            
+            Text(self.presenter.questions[self.presenter.currentQuestion].questionText)
+                .font(.largeTitle)
+                .fontWeight(.black)
+            
+            TextField("Your Answer", text: $currentAnswer)
+                .keyboardType(.numberPad)
+                .font(.largeTitle)
+                .foregroundColor(Color.white)
+                .multilineTextAlignment(.center)
+                .frame(width: 100, height: 50)
+                .padding()
+                .background(Color.gray)
+                .cornerRadius(10)
+                        
+            Button(action: {
+                self.answerQuestion()
+            }) {
+                Image(systemName: "checkmark")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .padding()
                     .background(Color.green)
                     .clipShape(Circle())
                     .foregroundColor(Color.white)
-                }
-                
-                Spacer ()
-            }.padding()
+            }
             
-            
-        }.foregroundColor(Color.white)
+            Spacer()
+        }.foregroundColor(Color.black)
     }
 }
 
+
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameView(presenter: MathGamePresenter())
+    }
+}
