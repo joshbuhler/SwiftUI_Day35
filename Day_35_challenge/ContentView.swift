@@ -29,13 +29,54 @@ struct ContentView: View {
 
 struct SetupView: View {
     
-    @State var presenter:MathGamePresenter
+    var presenter:MathGamePresenter
+    
+    @State private var lowerBound:Int = 0
+    @State private var upperBound:Int = 5
     
     var body: some View {
-        Text("Setup Game").onTapGesture {
-            print ("hi")
-            self.presenter.startGame(totalQuestions: 5, upperRange: 4)
-        }
+        
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color.orange, Color.black]),
+                           startPoint: .top,
+                           endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            
+            VStack (spacing: 40) {
+                Text("MATH FACTS")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                
+                Text("Set the game range:")
+                
+                HStack {
+                    VStack {
+                        Text("Lowest Number: \(self.lowerBound)")
+                        Stepper("", value: $lowerBound, in: 0...12)
+                        .labelsHidden()
+                    }
+                    
+                    Spacer()
+                    
+                    VStack (alignment: .center) {
+                        Text("Highest Number: \(self.upperBound)")
+                        Stepper("", value: $upperBound, in: 0...12)
+                            .labelsHidden()
+                    }
+                }.padding()
+                
+                
+                
+                Spacer ()
+            }
+            
+            
+        }.foregroundColor(Color.white)
+        
+        
+//        Text("Setup Game").onTapGesture {
+//            print ("hi")
+//            self.presenter.startGame(totalQuestions: 5, upperRange: 4)
+//        }
     }
 }
 
