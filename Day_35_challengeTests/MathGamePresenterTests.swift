@@ -222,6 +222,16 @@ class MathGamePresenterTests: XCTestCase {
         XCTAssertEqual(presenter.currentQuestion, 5)
         
         XCTAssertEqual(presenter.gameState, GameState.over)
+        
+        // try submitting another answer after game over - score shouldn't change
+        XCTAssertEqual(presenter.currentQuestion, presenter.questions.count)
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentQuestion, presenter.questions.count)
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentQuestion, presenter.questions.count)
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentScore, 3)
+        XCTAssertEqual(presenter.currentQuestion, 5)
     }
 
 }

@@ -66,6 +66,7 @@ class MathGamePresenter {
         }
     }
     
+    // Not used during the game - just for testing. But here because I wanted to test it for fun.
     func triangleNumber (_ num:Int) -> Int {
         return (num * (num + 1)) / 2
     }
