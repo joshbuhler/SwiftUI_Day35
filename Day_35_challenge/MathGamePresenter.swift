@@ -62,7 +62,7 @@ class MathGamePresenter {
         currentQuestion += 1
         
         if (currentQuestion >= questions.count) {
-            gameState = .over
+            gameState = .gameOver
         }
     }
     
@@ -76,7 +76,7 @@ class MathGamePresenter {
 enum GameState {
     case setup
     case playing
-    case over
+    case gameOver
 }
 
 struct MathQuestion {

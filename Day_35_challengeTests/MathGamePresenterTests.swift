@@ -179,7 +179,7 @@ class MathGamePresenterTests: XCTestCase {
             expectedQuestion += 1
         }
         
-        XCTAssertEqual(presenter.gameState, GameState.over)
+        XCTAssertEqual(presenter.gameState, GameState.gameOver)
     }
     
     func test_submitAnswer_someCorrect () {
@@ -221,7 +221,7 @@ class MathGamePresenterTests: XCTestCase {
         XCTAssertEqual(presenter.currentScore, 3)
         XCTAssertEqual(presenter.currentQuestion, 5)
         
-        XCTAssertEqual(presenter.gameState, GameState.over)
+        XCTAssertEqual(presenter.gameState, GameState.gameOver)
         
         // try submitting another answer after game over - score shouldn't change
         XCTAssertEqual(presenter.currentQuestion, presenter.questions.count)
