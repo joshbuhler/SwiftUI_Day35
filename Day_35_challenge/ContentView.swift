@@ -10,15 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var presenter:MathGamePresenter = MathGamePresenter()
-    @State var gameState:GameState = .setup
+    @ObservedObject var presenter:MathGamePresenter = MathGamePresenter()
     @State var option:Int = 0
     
     var body: some View {
         
-        switch (self.gameState) {
+        switch (self.presenter.gameState) {
         case .setup:
-            return AnyView(SetupView())
+            return AnyView(SetupView(presenter: self.presenter))
         case .playing:
             return AnyView(PlayingView())
         case .gameOver:
@@ -29,9 +28,13 @@ struct ContentView: View {
 }
 
 struct SetupView: View {
+    
+    @State var presenter:MathGamePresenter
+    
     var body: some View {
         Text("Setup Game").onTapGesture {
             print ("hi")
+            self.presenter.startGame(totalQuestions: 5, upperRange: 4)
         }
     }
 }

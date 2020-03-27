@@ -8,9 +8,9 @@
 
 import Foundation
 
-class MathGamePresenter {
+class MathGamePresenter: ObservableObject {
     
-    private(set) public var gameState:GameState = .setup
+    @Published private(set) public var gameState:GameState = .setup
     private(set) public var currentScore:Int = 0
     
     private(set) public var questions:[MathQuestion] = [MathQuestion]()
