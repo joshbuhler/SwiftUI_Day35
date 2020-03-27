@@ -25,15 +25,32 @@ class MathGamePresenter {
         
         gameState = .playing
         
-        for _ in 0..<totalQuestions {
-            let newQ = MathQuestion(leftSide: Int.random(in: lowerRange...upperRange),
-                                    rightSide: Int.random(in: lowerRange...upperRange))
-            questions.append(newQ)
+        if (totalQuestions == 0) {
+            // going to generate these slightly differently. 0 means that we do all possible questions
+            for u in (lowerRange...upperRange).reversed() {
+                for l in (lowerRange...u).reversed() {
+                    let newQ = MathQuestion(leftSide: u, rightSide: l)
+                    questions.append(newQ)
+                }
+            }
+            
+        } else {
+            for _ in 0..<totalQuestions {
+                let newQ = MathQuestion(leftSide: Int.random(in: lowerRange...upperRange),
+                                        rightSide: Int.random(in: lowerRange...upperRange))
+                questions.append(newQ)
+            }
         }
+        
+        
     }
     
     func submitAnswer (answer:Int) {
         
+    }
+    
+    func triangleNumber (_ num:Int) -> Int {
+        return (num * (num + 1)) / 2
     }
     
 }
