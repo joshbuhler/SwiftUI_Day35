@@ -21,7 +21,7 @@ struct ContentView: View {
         case .playing:
             return AnyView(GameView(presenter: self.presenter))
         case .gameOver:
-            return AnyView(GameOverView())
+            return AnyView(GameOverView(presenter: self.presenter))
         }
         
     }
