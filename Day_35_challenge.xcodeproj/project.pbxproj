@@ -18,6 +18,7 @@
 		5C6D47AE242D6DB100946966 /* MathGamePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47AD242D6DB100946966 /* MathGamePresenterTests.swift */; };
 		5C6D47B0242DADE600946966 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47AF242DADE600946966 /* SetupView.swift */; };
 		5C6D47B2242DAE2500946966 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47B1242DAE2500946966 /* GameView.swift */; };
+		5C6D47B4242DB50E00946966 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D47B3242DB50E00946966 /* GameOverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		5C6D47AD242D6DB100946966 /* MathGamePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathGamePresenterTests.swift; sourceTree = "<group>"; };
 		5C6D47AF242DADE600946966 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		5C6D47B1242DAE2500946966 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		5C6D47B3242DB50E00946966 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				5C6D478D242D666B00946966 /* ContentView.swift */,
 				5C6D47AF242DADE600946966 /* SetupView.swift */,
 				5C6D47B1242DAE2500946966 /* GameView.swift */,
+				5C6D47B3242DB50E00946966 /* GameOverView.swift */,
 				5C6D478F242D666C00946966 /* Assets.xcassets */,
 				5C6D4794242D666C00946966 /* LaunchScreen.storyboard */,
 				5C6D4797242D666C00946966 /* Info.plist */,
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6D47B4242DB50E00946966 /* GameOverView.swift in Sources */,
 				5C6D478A242D666B00946966 /* AppDelegate.swift in Sources */,
 				5C6D478C242D666B00946966 /* SceneDelegate.swift in Sources */,
 				5C6D47AC242D6CCA00946966 /* MathGamePresenter.swift in Sources */,

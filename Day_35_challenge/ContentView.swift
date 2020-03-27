@@ -28,11 +28,6 @@ struct ContentView: View {
 }
 
 
-struct GameOverView: View {
-    var body: some View {
-        Text("Game Over")
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
