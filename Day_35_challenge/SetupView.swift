@@ -29,7 +29,7 @@ struct SetupView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.orange, Color.black]),
+            LinearGradient(gradient: Gradient(colors: [Color.orange, Color.white]),
                            startPoint: .top,
                            endPoint: .bottom).edgesIgnoringSafeArea(.all)
             

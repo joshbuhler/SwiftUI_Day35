@@ -15,44 +15,53 @@ struct GameView: View {
     @State var currentAnswer:String = "0"
     
     func answerQuestion () {
-        print ("answerQuestion")
+        let answerNum = Int(currentAnswer) ?? 0
+        presenter.submitAnswer(answer: answerNum)
     }
     
     
     var body: some View {
-        
-        VStack (spacing: 30) {
+        ZStack {
             
-            Text("Current Score: \(self.presenter.currentScore)")
+            LinearGradient(gradient: Gradient(colors: [Color.red, Color.white]),
+                           startPoint: .top,
+                           endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
-            Text(self.presenter.questions[self.presenter.currentQuestion].questionText)
-                .font(.largeTitle)
-                .fontWeight(.black)
             
-            TextField("Your Answer", text: $currentAnswer)
-                .keyboardType(.numberPad)
-                .font(.largeTitle)
-                .foregroundColor(Color.white)
-                .multilineTextAlignment(.center)
-                .frame(width: 100, height: 50)
-                .padding()
-                .background(Color.gray)
-                .cornerRadius(10)
-                        
-            Button(action: {
-                self.answerQuestion()
-            }) {
-                Image(systemName: "checkmark")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .padding()
-                    .background(Color.green)
-                    .clipShape(Circle())
+            VStack (spacing: 30) {
+                
+                Text("Current Score: \(self.presenter.currentScore)")
+                Text("Round: \(self.presenter.currentQuestion) / \(self.presenter.questions.count)")
+                
+                Text(self.presenter.questions[self.presenter.currentQuestion].questionText)
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                
+                TextField("Your Answer", text: $currentAnswer)
+                    .keyboardType(.numberPad)
+                    .font(.largeTitle)
                     .foregroundColor(Color.white)
-            }
-            
-            Spacer()
-        }.foregroundColor(Color.black)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 100, height: 50)
+                    .padding()
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                
+                Button(action: {
+                    self.answerQuestion()
+                }) {
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .padding()
+                        .background(Color.green)
+                        .clipShape(Circle())
+                        .foregroundColor(Color.white)
+                }
+                
+                Spacer()
+            }.foregroundColor(Color.black)
+        }
     }
 }
 

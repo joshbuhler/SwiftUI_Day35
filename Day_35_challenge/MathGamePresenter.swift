@@ -11,10 +11,10 @@ import Foundation
 class MathGamePresenter: ObservableObject {
     
     @Published private(set) public var gameState:GameState = .setup
-    private(set) public var currentScore:Int = 0
+    @Published private(set) public var currentScore:Int = 0
     
     private(set) public var questions:[MathQuestion] = [MathQuestion]()
-    private(set) public var currentQuestion:Int = 0
+    @Published private(set) public var currentQuestion:Int = 0
     
     func newGame () {
         gameState = .setup
