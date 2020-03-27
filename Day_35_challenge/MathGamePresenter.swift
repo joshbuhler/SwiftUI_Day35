@@ -24,7 +24,7 @@ class MathGamePresenter: ObservableObject {
     }
     
     func startGame (totalQuestions:Int, upperRange:Int, lowerRange:Int = 0) {
-        
+        print ("startGame - questions: \(totalQuestions) upper: \(upperRange) lower: \(lowerRange)")
         gameState = .playing
         
         if (totalQuestions == 0) {
