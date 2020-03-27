@@ -48,6 +48,11 @@ class MathGamePresenter {
     }
     
     func submitAnswer (answer:Int) {
+        
+        if (gameState != .playing) {
+            return
+        }
+        
         let currentQ = questions[currentQuestion]
                 
         if ((currentQ.correctAnswer == answer)) {
@@ -55,6 +60,10 @@ class MathGamePresenter {
         }
         
         currentQuestion += 1
+        
+        if (currentQuestion >= questions.count) {
+            gameState = .over
+        }
     }
     
     func triangleNumber (_ num:Int) -> Int {

@@ -166,6 +166,8 @@ class MathGamePresenterTests: XCTestCase {
         var expectedScore = 1
         var expectedQuestion = 1
         
+        XCTAssertEqual(presenter.gameState, GameState.playing)
+        
         for q in presenter.questions {
             
             presenter.submitAnswer(answer: q.correctAnswer)
@@ -176,6 +178,8 @@ class MathGamePresenterTests: XCTestCase {
             expectedScore += 1
             expectedQuestion += 1
         }
+        
+        XCTAssertEqual(presenter.gameState, GameState.over)
     }
     
     func test_submitAnswer_someCorrect () {
@@ -193,21 +197,31 @@ class MathGamePresenterTests: XCTestCase {
         presenter.submitAnswer(answer: q.correctAnswer)
         XCTAssertEqual(presenter.currentScore, 1)
         XCTAssertEqual(presenter.currentQuestion, 1)
+        XCTAssertEqual(presenter.gameState, GameState.playing)
         
         q = presenter.questions[presenter.currentQuestion]
         presenter.submitAnswer(answer: q.correctAnswer + 1)
         XCTAssertEqual(presenter.currentScore, 1)
         XCTAssertEqual(presenter.currentQuestion, 2)
+        XCTAssertEqual(presenter.gameState, GameState.playing)
         
         q = presenter.questions[presenter.currentQuestion]
         presenter.submitAnswer(answer: q.correctAnswer + 1)
         XCTAssertEqual(presenter.currentScore, 1)
         XCTAssertEqual(presenter.currentQuestion, 3)
+        XCTAssertEqual(presenter.gameState, GameState.playing)
         
         q = presenter.questions[presenter.currentQuestion]
         presenter.submitAnswer(answer: q.correctAnswer)
         XCTAssertEqual(presenter.currentScore, 2)
         XCTAssertEqual(presenter.currentQuestion, 4)
+        
+        q = presenter.questions[presenter.currentQuestion]
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentScore, 3)
+        XCTAssertEqual(presenter.currentQuestion, 5)
+        
+        XCTAssertEqual(presenter.gameState, GameState.over)
     }
 
 }
