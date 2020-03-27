@@ -176,10 +176,38 @@ class MathGamePresenterTests: XCTestCase {
             expectedScore += 1
             expectedQuestion += 1
         }
-            
-            expectedScore += 1
-            expectedQuestion += 1
-        }
+    }
+    
+    func test_submitAnswer_someCorrect () {
+        let presenter = MathGamePresenter()
+        
+        let questionCount = 5
+        let upperRange = 5
+        presenter.startGame(totalQuestions: questionCount,
+                            upperRange: upperRange)
+        
+        XCTAssertEqual(presenter.currentScore, 0)
+        XCTAssertEqual(presenter.currentQuestion, 0)
+        
+        var q = presenter.questions[presenter.currentQuestion]
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentScore, 1)
+        XCTAssertEqual(presenter.currentQuestion, 1)
+        
+        q = presenter.questions[presenter.currentQuestion]
+        presenter.submitAnswer(answer: q.correctAnswer + 1)
+        XCTAssertEqual(presenter.currentScore, 1)
+        XCTAssertEqual(presenter.currentQuestion, 2)
+        
+        q = presenter.questions[presenter.currentQuestion]
+        presenter.submitAnswer(answer: q.correctAnswer + 1)
+        XCTAssertEqual(presenter.currentScore, 1)
+        XCTAssertEqual(presenter.currentQuestion, 3)
+        
+        q = presenter.questions[presenter.currentQuestion]
+        presenter.submitAnswer(answer: q.correctAnswer)
+        XCTAssertEqual(presenter.currentScore, 2)
+        XCTAssertEqual(presenter.currentQuestion, 4)
     }
 
 }
