@@ -14,11 +14,13 @@ class MathGamePresenter {
     private(set) public var currentScore:Int = 0
     
     private(set) public var questions:[MathQuestion] = [MathQuestion]()
+    private(set) public var currentQuestion:Int = 0
     
     func newGame () {
         gameState = .setup
         currentScore = 0
         questions = [MathQuestion]()
+        currentQuestion = 0
     }
     
     func startGame (totalQuestions:Int, upperRange:Int, lowerRange:Int = 0) {
@@ -35,7 +37,7 @@ class MathGamePresenter {
             }
             
             // now mix things up a bit
-            questions.shuffle()            
+            questions.shuffle()
         } else {
             for _ in 0..<totalQuestions {
                 let newQ = MathQuestion(leftSide: Int.random(in: lowerRange...upperRange),
@@ -46,7 +48,13 @@ class MathGamePresenter {
     }
     
     func submitAnswer (answer:Int) {
+        let currentQ = questions[currentQuestion]
+                
+        if ((currentQ.correctAnswer == answer)) {
+            currentScore += 1
+        }
         
+        currentQuestion += 1
     }
     
     func triangleNumber (_ num:Int) -> Int {
@@ -65,9 +73,11 @@ struct MathQuestion {
     var leftSide:Int
     var rightSide:Int
     
+    var correctAnswer:Int {
+        return leftSide * rightSide
+    }
+    
     var questionText:String {
-        get {
-            return "What is \(leftSide) x \(rightSide)?"
-        }
+        return "What is \(leftSide) x \(rightSide)?"
     }
 }

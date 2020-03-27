@@ -27,6 +27,7 @@ class MathGamePresenterTests: XCTestCase {
         XCTAssertEqual(presenter.gameState, .setup)
         XCTAssertEqual(presenter.currentScore, 0)
         XCTAssertTrue(presenter.questions.count == 0)
+        XCTAssertEqual(presenter.currentQuestion, 0)
         
         presenter.startGame(totalQuestions: 3, upperRange: 5)
         
@@ -38,6 +39,7 @@ class MathGamePresenterTests: XCTestCase {
         XCTAssertEqual(presenter.gameState, .setup)
         XCTAssertEqual(presenter.currentScore, 0)
         XCTAssertTrue(presenter.questions.count == 0)
+        XCTAssertEqual(presenter.currentQuestion, 0)
     }
     
     func test_triangleNumber () {
@@ -150,8 +152,34 @@ class MathGamePresenterTests: XCTestCase {
         }
     }
     
-    func submitAnswer () {
+    func test_submitAnswer_allCorrect () {
+        let presenter = MathGamePresenter()
         
+        let questionCount = 5
+        let upperRange = 5
+        presenter.startGame(totalQuestions: questionCount,
+                            upperRange: upperRange)
+        
+        XCTAssertEqual(presenter.currentScore, 0)
+        XCTAssertEqual(presenter.currentQuestion, 0)
+        
+        var expectedScore = 1
+        var expectedQuestion = 1
+        
+        for q in presenter.questions {
+            
+            presenter.submitAnswer(answer: q.correctAnswer)
+            
+            XCTAssertEqual(presenter.currentScore, expectedScore)
+            XCTAssertEqual(presenter.currentQuestion, expectedQuestion)
+            
+            expectedScore += 1
+            expectedQuestion += 1
+        }
+            
+            expectedScore += 1
+            expectedQuestion += 1
+        }
     }
 
 }
